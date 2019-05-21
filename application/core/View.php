@@ -6,7 +6,7 @@ class View
 {
     protected $path;
     protected $route;
-    protected $layout = 'default';
+    public $layout = 'default';
 
     public function __construct($route)
     {
@@ -40,7 +40,7 @@ class View
     }
 
     public function redirect($url) {
-        header("Location: " . $url);
+        header("Location: /" . $url);
         exit;
     }
 
