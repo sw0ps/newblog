@@ -6,8 +6,8 @@ use Application\Core\View;
 
 class Router
 {
-    private $routes;
-    private $params;
+    protected $routes;
+    protected $params;
 
     public function __construct()
     {
@@ -33,7 +33,15 @@ class Router
     {
         $uri = trim($_SERVER['REQUEST_URI'], "/");
         foreach ($this->routes as $route => $params) {
-            if (preg_match($route, $uri)) {
+            if (preg_match($route, $uri, $matches)) {
+                foreach ($matches as $key => $match) {
+                    if (is_string($key)) {
+                        if (is_numeric($match)) {
+                            $match = (int) $match;
+                        }
+                        $params[$key] = $match;
+                    }
+                }
                 $this->params = $params;
                 return true;
             }

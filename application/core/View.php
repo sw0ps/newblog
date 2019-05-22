@@ -15,8 +15,7 @@ class View
     }
 
     protected function setPath($route) {
-        ['controller' => $controller, 'action' => $action] = $route;
-        $this->path = "{$controller}/{$action}";
+        $this->path = "{$route['controller']}/{$route['action']}";
     }
 
     public function render($title, $variables = []) {

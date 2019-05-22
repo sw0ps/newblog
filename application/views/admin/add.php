@@ -26,8 +26,8 @@
                                 <label>Статус</label>
                                 <p>
                                     <select name="status">
-                                        <option value="open">Опубликовать</option>
                                         <option value="close">Черновик</option>
+                                        <option value="open">Опубликовать</option>
                                     </select>
                                 </p>
                             </div>

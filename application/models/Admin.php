@@ -2,7 +2,10 @@
 
 namespace Application\Models;
 
-class Admin {
+use Application\Core\Model;
+use \Imagick;
+
+class Admin extends Model {
 
     public $error = [];
 
@@ -32,12 +35,12 @@ class Admin {
             $this->error['content'] = "Контент поста должен содержать не менее 30ти символов";
         }
 
-//        $img = $_FILES['img']['tmp_name'];
-//        if ($type == 'edit' and empty($img)) {
-//            if(empty($img)) {
-//                $this->error['img'] = "Изображение не выбрано";
-//            }
-//        }
+        $img = $_FILES['img']['tmp_name'];
+        if ($type == 'edit' and empty($img)) {
+            if(empty($img)) {
+                $this->error['img'] = "Изображение не выбрано";
+            }
+        }
 
         if(empty($this->error)) {
             return true;
@@ -45,16 +48,67 @@ class Admin {
         return false;
     }
 
+//    public function addPost($id, $post) {
+//        $params = [
+//            "title" => $post['title'],
+//            "description" => $post['description'],
+//            "content" => $post['content'],
+//            "status" => $post['status'],
+//            "publication_date" => strtotime(date("Y-m-d H:i:s")),
+//        ];
+//
+//        $this->db->query("INSERT INTO posts (title, description, content, status, publication_date) VALUES (:title, :description, :content, :status, :publication_date)", $params);
+//        return $this->db->lastInsertId();
+//    }
+
     public function addPost($post) {
         $params = [
-            'id' => "",
             "title" => $post['title'],
             "description" => $post['description'],
             "content" => $post['content'],
             "status" => $post['status'],
-            "publication_date" => strtotime(date("Y-m-d H:i:s"))
+            "publication_date" => strtotime(date("Y-m-d H:i:s")),
         ];
 
-        $this->db->query("INSERT INTO posts VALUES (:id, :title, :description, :content, :status, :publication_date)", $params);
+        $this->db->query("INSERT INTO posts (title, description, content, status, publication_date) VALUES (:title, :description, :content, :status, :publication_date)", $params);
+        return $this->db->lastInsertId();
+    }
+
+    public function postUploadImage($file, $id) {
+        move_uploaded_file($file, 'public/uploads/' . $id . '.jpg');
+    }
+
+    public function isPostExists($id) {
+        $params = [
+            'id' => $id,
+        ];
+        return $this->db->column('Select id from posts where id = :id', $params);
+    }
+
+    public function deletePost($id) {
+        $params = [
+            'id' => $id
+        ];
+        $this->db->query("DELETE FROM posts WHERE id = :id", $params);
+        unlink('public/uploads/' . $id . '.jpg');
+    }
+
+    public function getPost($id) {
+        $params = [
+            'id' => $id
+        ];
+        return $this->db->row("SELECT * FROM posts WHERE id = :id", $params);
+    }
+
+    public function updatePost($id, $post) {
+        $params = [
+            'id' => $id,
+            "title" => $post['title'],
+            "description" => $post['description'],
+            "content" => $post['content'],
+            "status" => $post['status'],
+            "publication_date" => strtotime(date("Y-m-d H:i:s")),
+        ];
+        return $this->db->query("UPDATE posts SET title = :title, description = :description, content = :content, status = :status, publication_date = :publication_date) where id = :id", $params);
     }
 }
