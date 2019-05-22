@@ -36,14 +36,10 @@ abstract class Controller
         $this->acl = require 'application/acl/' . $this->route['controller'] . '.php';
         if ($this->isAcl('all')) {
             return true;
-        } else if (isset($_SESSION['authorize']['id']) && $this->isAcl('authorize')) {
-            return true;
-        } else if (!isset($_SESSION['authorize']['id']) && $this->isAcl('guest')) {
-            return true;
-        } else if (isset($_SESSION['admin']) && $this->isAcl('admin')) {
+        } else if (isset($_SESSION['admin']) and $this->isAcl('admin')) {
             return true;
         } else {
-            exit("<h2>Доступ запрещен</h2>");
+            return false;
         }
     }
 

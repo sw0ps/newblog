@@ -1,15 +1,13 @@
+
 <?php
 
 return [
 
     'all' => [
         'index',
-    ],
-    'authorize' => [
-
-    ],
-    'guest' => [
-
+        'about',
+        'contact',
+        'post',
     ],
     'admin' => [
 
