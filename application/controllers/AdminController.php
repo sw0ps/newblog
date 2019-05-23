@@ -73,6 +73,9 @@ class AdminController extends Controller
                 $this->view->message('ERROR', $errors);
             }
             $this->model->updatePost($this->route['id'], $_POST);
+            if($_FILES['img']['tmp_name']) {
+                $this->model->postUploadImage($_FILES['img']['tmp_name'], $this->route['id']);
+            }
             $this->view->message('Success', "OK");
         }
         $variables = [
@@ -83,7 +86,11 @@ class AdminController extends Controller
 
     public function postsAction()
     {
-        $this->view->render("Список постов");
+        $list = $this->model->getAllPosts();
+        $variables = [
+            'list' => $list,
+        ];
+        $this->view->render("Список постов", $variables);
     }
 
     public function deleteAction()

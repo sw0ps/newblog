@@ -18,7 +18,7 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
-            <!--            <p>--><?php //echo htmlspecialchars($data['text'], ENT_QUOTES); ?><!--</p>-->
+                        <p><?php echo htmlspecialchars($data['text'], ENT_QUOTES); ?></p>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda facilis, illo magnam nobis numquam
                 obcaecati perferendis possimus repellendus sunt suscipit tenetur, ut. Aliquam assumenda, maiores odio
                 provident quas quisquam rem? A aliquam aliquid dolores explicabo laboriosam magnam praesentium repellat!

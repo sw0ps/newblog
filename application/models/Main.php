@@ -13,18 +13,15 @@ class Main extends Model
         $nameLength = mb_strlen($post['name']);
         if ($nameLength < 3 or $nameLength > 20) {
             $this->error['name'] = "Имя должно содержать от 3х до 20ти символов";
-//            return false;
         }
 
         if (!filter_var($post['email'], FILTER_VALIDATE_EMAIL)){
             $this->error['email'] = "Email указан неверно";
-//            return false;
         }
 
         $textLength = mb_strlen($post['text']);
         if ($textLength < 10 or $textLength > 500) {
             $this->error['text'] = "Сообшение должно содержать от 10 до 500 символов";
-//            return false;
         }
 
         if(empty($this->error)) {
@@ -32,4 +29,5 @@ class Main extends Model
         }
         return false;
     }
+
 }
