@@ -8,6 +8,7 @@ return [
         'about',
         'contact',
         'post',
+        'list'
     ],
     'admin' => [
 

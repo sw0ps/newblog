@@ -15,7 +15,7 @@ class Main extends Model
             $this->error['name'] = "Имя должно содержать от 3х до 20ти символов";
         }
 
-        if (!filter_var($post['email'], FILTER_VALIDATE_EMAIL)){
+        if (!filter_var($post['email'], FILTER_VALIDATE_EMAIL)) {
             $this->error['email'] = "Email указан неверно";
         }
 
@@ -24,10 +24,24 @@ class Main extends Model
             $this->error['text'] = "Сообшение должно содержать от 10 до 500 символов";
         }
 
-        if(empty($this->error)) {
+        if (empty($this->error)) {
             return true;
         }
         return false;
+    }
+
+    public function getList()
+    {
+        return $this->db->row("SELECT * FROM posts");
+    }
+
+    public function getListPage($limit)
+    {
+        var_dump($limit);
+        $params = [
+            'limit' => $limit,
+        ];
+        return $this->db->row("SELECT * FROM posts LIMIT {$limit}");
     }
 
 }

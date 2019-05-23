@@ -3,13 +3,17 @@
 namespace Application\Controllers;
 
 use Application\Core\Controller;
+use Application\Lib\Pagination;
 use Application\Lib\Db;
 
 class MainController extends Controller
 {
     public function indexAction()
     {
-
+//        $pagination = new Pagination($this->route, 100);
+//        $vars = [
+//            'pagination' => $pagination->get(),
+//        ];
         $this->view->render("Тестовый блог");
     }
 
@@ -42,5 +46,15 @@ class MainController extends Controller
     {
 
         $this->view->render("Пост");
+    }
+
+    public function listAction() {
+        $pagination = new Pagination($_POST);
+        $startPagination = $pagination->startFrom();
+        $list = $this->model->getListPage($startPagination);
+        $pagination->output($list);
+        $result = $pagination->getOutputHtml();
+        debug($result);
+
     }
 }

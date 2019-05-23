@@ -6,6 +6,14 @@ return [
         'controller' => 'main',
         'action' => 'index',
     ],
+    '{page:\d+}' => [
+        'controller' => 'main',
+        'action' => 'index',
+    ],
+    'list' => [
+        'controller' => 'main',
+        'action' => 'list',
+    ],
     'main/index/{page:\d+}' => [
         'controller' => 'main',
         'action' => 'index',
