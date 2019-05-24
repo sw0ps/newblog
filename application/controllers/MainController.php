@@ -10,11 +10,13 @@ class MainController extends Controller
 {
     public function indexAction()
     {
-//        $pagination = new Pagination($this->route, 100);
-//        $vars = [
-//            'pagination' => $pagination->get(),
-//        ];
-        $this->view->render("Тестовый блог");
+        $pagination = new Pagination($this->route, $this->model->postsCount());
+        $vars = [
+            'pagination' => $pagination->get(),
+            'list'       => $this->model->postsList($this->route),
+        ];
+        debug($vars);
+        $this->view->render("Тестовый блог", $vars);
     }
 
     public function aboutAction()
@@ -48,13 +50,13 @@ class MainController extends Controller
         $this->view->render("Пост");
     }
 
-    public function listAction() {
-        $pagination = new Pagination($_POST);
-        $startPagination = $pagination->startFrom();
-        $list = $this->model->getListPage($startPagination);
-        $pagination->output($list);
-        $result = $pagination->getOutputHtml();
-        debug($result);
-
-    }
+//    public function listAction() {
+//        $pagination = new Pagination($_POST);
+//        $startPagination = $pagination->startFrom();
+//        $list = $this->model->getListPage($startPagination);
+//        $pagination->output($list);
+//        $result = $pagination->getOutputHtml();
+//        debug($result);
+//
+//    }
 }

@@ -30,6 +30,21 @@ class Main extends Model
         return false;
     }
 
+    public function postsCount()
+    {
+        return $this->db->column("SELECT COUNT(id) FROM posts");
+    }
+
+    public function postsList($route)
+    {
+        $max = 1;
+        $params = [
+            'max' => $max,
+            'start' => (($route['page'] ?? 1) - 1) * $max,
+        ];
+        return $this->db->row("SELECT * FROM posts ORDER BU publication_date DESC LIMIT :start, :max" , $params);
+    }
+
     public function getList()
     {
         return $this->db->row("SELECT * FROM posts");

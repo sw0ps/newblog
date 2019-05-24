@@ -20,16 +20,16 @@ $(document).ready(function () {
         });
     });
 
-    function load_data(page) {
-		$.ajax({
-            url: "/list",
-            method:"POST",
-            data:{page:page},
-            success:function (data) {
-                $("#pagination_data").html(data);
-            }
-        });
-    }
-
-    load_data(2);
+    // function load_data(page) {
+		// $.ajax({
+    //         url: "/list",
+    //         method:"POST",
+    //         data:{page:page},
+    //         success:function (data) {
+    //             $("#pagination_data").html(data);
+    //         }
+    //     });
+    // }
+    //
+    // load_data(2);
 });
