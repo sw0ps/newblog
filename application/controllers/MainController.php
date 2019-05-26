@@ -1,10 +1,10 @@
 <?php
 
-namespace Application\Controllers;
+namespace application\controllers;
 
-use Application\Core\Controller;
-use Application\Lib\Pagination;
-use Application\Lib\Db;
+use application\core\Controller;
+use application\lib\Pagination;
+//use application\models\Admin;
 
 class MainController extends Controller
 {
@@ -13,50 +13,31 @@ class MainController extends Controller
         $pagination = new Pagination($this->route, $this->model->postsCount());
         $vars = [
             'pagination' => $pagination->get(),
-            'list'       => $this->model->postsList($this->route),
+            'list' => $this->model->postsList($this->route),
         ];
-        debug($vars);
-        $this->view->render("Тестовый блог", $vars);
+//        debug($vars);
+        $this->view->render('Главная страница', $vars);
     }
 
     public function aboutAction()
     {
-
-        $this->view->render("Обо мне");
+        $this->view->render('Обо мне');
     }
 
     public function contactAction()
     {
-        if(!empty($_POST)) {
-            if(!$this->model->contactValidate($_POST)) {
-                $errors = "";
-                foreach ($this->model->error as $key => $value) {
-                    $errors .= "Ошибка: {$value}\n";
-                }
-                $this->view->message('ERROR', $errors);
-
+        if (!empty($_POST)) {
+            if (!$this->model->contactValidate($_POST)) {
+                $this->view->message('error', $this->model->error);
             }
-
-            mail("dmytro.usachov@gmail.com", "Сообщение из блога", $_POST['name'] . " | " . $_POST['text']);
-            $this->view->message('success', "Сообщение отправлено Администратору");
-
+            mail('dmytro.usachov@gmail.com', 'Сообщение из блога', $_POST['name'] . '|' . $_POST['email'] . '|' . $_POST['text']);
+            $this->view->message('success', 'Сообщение отправлено Администратору');
         }
-        $this->view->render("Контакты");
+        $this->view->render('Контакты');
     }
 
     public function postAction()
     {
-
-        $this->view->render("Пост");
+        $this->view->render('Пост');
     }
-
-//    public function listAction() {
-//        $pagination = new Pagination($_POST);
-//        $startPagination = $pagination->startFrom();
-//        $list = $this->model->getListPage($startPagination);
-//        $pagination->output($list);
-//        $result = $pagination->getOutputHtml();
-//        debug($result);
-//
-//    }
 }

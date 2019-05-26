@@ -32,31 +32,49 @@ class Main extends Model
 
     public function postsCount()
     {
-        return $this->db->column("SELECT COUNT(id) FROM posts");
+        return $this->db->column('SELECT COUNT(id) FROM posts');
     }
 
     public function postsList($route)
     {
-        $max = 1;
+        $max = 5;
         $params = [
             'max' => $max,
-            'start' => (($route['page'] ?? 1) - 1) * $max,
+            'start' => ((($route['page'] ?? 1) - 1) * $max),
         ];
-        return $this->db->row("SELECT * FROM posts ORDER BU publication_date DESC LIMIT :start, :max" , $params);
+        return $this->db->row('SELECT * FROM posts ORDER BY id DESC LIMIT :start, :max', $params);
     }
 
-    public function getList()
-    {
-        return $this->db->row("SELECT * FROM posts");
-    }
-
-    public function getListPage($limit)
-    {
-        var_dump($limit);
-        $params = [
-            'limit' => $limit,
-        ];
-        return $this->db->row("SELECT * FROM posts LIMIT {$limit}");
-    }
+//    public function postsList($route)
+//    {
+//
+//        $max = 10;
+//        if (isset($route['page'])) {
+//            $pag = $route['page'];
+//        } else {
+//            $pag = 1;
+//        }
+//        $params = ['max' => $max, 'start' => (($pag) - 1) * $max,];
+////        $params = [
+////            'max' => $max,
+////            'start' => ((($route['page'] ?? 1) - 1) * $max),
+////        ];
+//        debug($params);
+//        return $this->db->row('SELECT * FROM posts ORDER BY id DESC LIMIT :start, :max', $params);
+//    }
+//
+//    public function getList()
+//    {
+//        return $this->db->row("SELECT * FROM posts");
+//    }
+//
+//    public function getListPage($limit)
+//    {
+//        var_dump($limit);
+//        $params = [
+//            'limit' => $limit,
+//        ];
+//        return $this->db->row("SELECT * FROM posts LIMIT {$limit}");
+//    }
 
 }
