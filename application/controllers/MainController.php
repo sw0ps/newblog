@@ -38,6 +38,12 @@ class MainController extends Controller
 
     public function postAction()
     {
-        $this->view->render('Пост');
+        $data = $this->model->getPost($this->route['id'])[0];
+//        debug($data);
+        $vars = [
+            'data' => $data,
+        ];
+        $this->view->render($data['title'], $vars);
     }
+
 }

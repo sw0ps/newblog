@@ -45,6 +45,14 @@ class Main extends Model
         return $this->db->row('SELECT * FROM posts ORDER BY id DESC LIMIT :start, :max', $params);
     }
 
+    public function getPost($id)
+    {
+        $params = [
+            'id' => $id
+        ];
+        return $this->db->row("SELECT * FROM posts WHERE id = :id", $params);
+    }
+
 //    public function postsList($route)
 //    {
 //
