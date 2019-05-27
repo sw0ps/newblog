@@ -24,7 +24,7 @@
                             <h2 class="post-title"><?=htmlspecialchars($val['title'], ENT_QUOTES); ?></h2>
                             <h5 class="post-subtitle"><?= htmlspecialchars($val['description'], ENT_QUOTES); ?></h5>
                         </a>
-                        <p class="post-meta">Идентфикатор этого поста <?= $val['id']; ?></p>
+                        <p class="post-meta">Дата публикации: <?= date("H:i d-m-Y", $val['publication_date']); ?></p>
                     </div>
                     <hr>
                 <?php endforeach; ?>

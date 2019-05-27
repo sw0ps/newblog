@@ -2,7 +2,7 @@
     <div class="card card-login mx-auto mt-5">
         <div class="card-header">Вход в панель Администратора</div>
         <div class="card-body">
-            <form action="/admin/login" method="post">
+            <form class="form_std" action="/admin/login" method="post">
                 <div class="form-group">
                     <label>Логин</label>
                     <input class="form-control" type="text" name="login">

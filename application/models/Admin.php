@@ -51,10 +51,11 @@ class Admin extends Model
             "description" => $post['description'],
             "content" => $post['content'],
             "status" => $post['status'],
+            "tags" => $post['tags'],
             "publication_date" => strtotime(date("Y-m-d H:i:s")),
         ];
 
-        $this->db->query("INSERT INTO posts (title, description, content, status, publication_date) VALUES (:title, :description, :content, :status, :publication_date)", $params);
+        $this->db->query("INSERT INTO posts (title, description, content, status, tags, publication_date) VALUES (:title, :description, :content, :status, :tags, :publication_date)", $params);
         return $this->db->lastInsertId();
     }
 
@@ -66,9 +67,10 @@ class Admin extends Model
             "description" => $post['description'],
             "content" => $post['content'],
             "status" => $post['status'],
+            "tags" => $post['tags'],
             "last_edit_date" => strtotime(date("Y-m-d H:i:s")),
         ];
-        return $this->db->query("UPDATE posts SET title = :title, description = :description, content = :content, status = :status, last_edit_date = :last_edit_date WHERE id = :id", $params);
+        return $this->db->query("UPDATE posts SET title = :title, description = :description, content = :content, status = :status, tags = :tags, last_edit_date = :last_edit_date WHERE id = :id", $params);
     }
 
     public function postUploadImage($file, $id)

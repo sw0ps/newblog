@@ -14,10 +14,10 @@ return [
         'controller' => 'main',
         'action' => 'list',
     ],
-    'main/index/{page:\d+}' => [
-        'controller' => 'main',
-        'action' => 'index',
-    ],
+//    'main/index/{page:\d+}' => [
+//        'controller' => 'main',
+//        'action' => 'index',
+//    ],
     'about' => [
         'controller' => 'main',
         'action' => 'about',
@@ -25,6 +25,14 @@ return [
     'contact' => [
         'controller' => 'main',
         'action' => 'contact',
+    ],
+    'comments/add' => [
+        'controller' => 'comments',
+        'action' => 'add',
+    ],
+    'comments/show' => [
+        'controller' => 'comments',
+        'action' => 'show',
     ],
     'post/{id:\d+}' => [
         'controller' => 'main',

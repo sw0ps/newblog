@@ -463,3 +463,56 @@ footer .copyright {
 .comments-list .media{
     border-bottom: 1px dotted #ccc;
 }
+
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+.contentwrapper {
+    flex: 1 0 auto;
+}
+
+.content {
+    flex: 1 0 auto;
+}
+
+.footer {
+    flex: 0 0 auto;
+}
+
+/* Comments */
+
+.comment__info {
+     display: inline-block;
+     width: 100%;
+}
+
+.form__comment {
+    margin: 10px 0;
+    font-size: 18px;
+}
+.form__comment--name,
+.form__comment--email {
+    width: 50%;
+}
+
+.ui-menu-item {
+    list-style: none;
+    background: white;
+}
+
+@media all and (max-width: 540px) {
+    .form__comment--name,
+    .form__comment--email {
+        width: 75%;
+    }
+}
+
+@media all and (max-width: 400px) {
+    .form__comment--name,
+    .form__comment--email {
+        width: 100%;
+    }
+}

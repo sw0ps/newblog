@@ -5,7 +5,7 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-sm-4">
-                        <form action="/admin/edit/<?php echo $data['id']; ?>" method="post">
+                        <form class="form_std" action="/admin/edit/<?php echo $data['id']; ?>" method="post">
                             <div class="form-group">
                                 <label>Название</label>
                                 <input class="form-control" type="text"
@@ -50,6 +50,10 @@
                                         </select>
                                     <?php } ?>
                                 </p>
+                            </div>
+                            <div class="form-group">
+                                <label>Tags</label>
+                                <input type="text" name="tags" id="tags" value="<?= $data['tags'] ?>">
                             </div>
                             <button type="submit" class="btn btn-primary btn-block">Сохранить</button>
                         </form>

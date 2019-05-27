@@ -10,6 +10,8 @@
                         <?php else: ?>
                             <table class="table">
                                 <tr>
+                                    <th>Дата публикации</th>
+                                    <th>Статус</th>
                                     <th>Название</th>
                                     <th>Описание</th>
                                     <th>Редактировать</th>
@@ -17,6 +19,8 @@
                                 </tr>
                                 <?php foreach ($list as $val): ?>
                                     <tr>
+                                        <td><?php echo htmlspecialchars(date("H:i d-m-Y", $val['publication_date']), ENT_QUOTES); ?></td>
+                                        <td><?php echo htmlspecialchars($val['status'], ENT_QUOTES); ?></td>
                                         <td><?php echo htmlspecialchars($val['title'], ENT_QUOTES); ?></td>
                                         <td><?php echo htmlspecialchars($val['description'], ENT_QUOTES); ?></td>
                                         <td><a href="/admin/edit/<?php echo $val['id']; ?>" class="btn btn-primary">Редактировать</a></td>

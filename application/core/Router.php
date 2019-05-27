@@ -51,6 +51,7 @@ class Router
 
     public function run()
     {
+
         if ($this->match()) {
             $path = 'Application\Controllers\\' . ucfirst($this->params['controller']) . 'Controller';
             if (class_exists($path)) {

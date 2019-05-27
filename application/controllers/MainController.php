@@ -1,9 +1,10 @@
 <?php
 
-namespace application\controllers;
+namespace Application\Controllers;
 
-use application\core\Controller;
-use application\lib\Pagination;
+use Application\Core\Controller;
+use Application\Lib\Pagination;
+
 //use application\models\Admin;
 
 class MainController extends Controller
@@ -15,7 +16,6 @@ class MainController extends Controller
             'pagination' => $pagination->get(),
             'list' => $this->model->postsList($this->route),
         ];
-//        debug($vars);
         $this->view->render('Главная страница', $vars);
     }
 
@@ -39,7 +39,6 @@ class MainController extends Controller
     public function postAction()
     {
         $data = $this->model->getPost($this->route['id'])[0];
-//        debug($data);
         $vars = [
             'data' => $data,
         ];
