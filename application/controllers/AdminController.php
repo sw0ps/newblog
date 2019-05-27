@@ -15,7 +15,7 @@ class AdminController extends Controller
     public function loginAction()
     {
         if (isset($_SESSION['admin'])) {
-            $this->view->redirect('admin/add');
+            $this->view->redirect('admin/posts');
         }
         if (!empty($_POST)) {
             if (!$this->model->loginValidate($_POST)) {
@@ -27,7 +27,6 @@ class AdminController extends Controller
 
             }
             $_SESSION['admin'] = true;
-//            $this->view->message('success', "Сообщение отправлено Администратору");
             $this->view->location('admin/posts');
         }
         $this->view->render("Авторизация");

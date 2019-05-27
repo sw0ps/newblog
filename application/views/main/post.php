@@ -18,11 +18,14 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
-            <div class="tags">
-                <?php foreach ($tags as $tag) { ?>
-                    <span class="tag tag-success"><?= $tag;?></span>
-                <?php } ?>
-            </div>
+            <?php if (!empty($tags)) { ?>
+                <div class="tags">
+                    <?php
+                    foreach ($tags as $tag) { ?>
+                        <span class="tag tag-success"><?= $tag; ?></span>
+                    <?php } ?>
+                </div>
+            <?php } ?>
             <p><?php echo htmlspecialchars($data['content'], ENT_QUOTES); ?></p>
         </div>
     </div>
@@ -35,9 +38,12 @@
             <div class="panel-body">
                 <form id="add_comment" action="/comment/add" method="post">
                     <input type="hidden" name="posts_id" value="<?= $data['id']; ?>">
-                    <input required class="form__comment form__comment--name form-control" type="text" name="name" placeholder="Имя">
-                    <input required class="form__comment form__comment--email form-control" type="email" name="email" placeholder="Email">
-                    <textarea required class="form__comment form__comment--text form-control" rows="2" name="comment" placeholder="Комментарий"></textarea>
+                    <input required class="form__comment form__comment--name form-control" type="text" name="name"
+                           placeholder="Имя">
+                    <input required class="form__comment form__comment--email form-control" type="email" name="email"
+                           placeholder="Email">
+                    <textarea required class="form__comment form__comment--text form-control" rows="2" name="comment"
+                              placeholder="Комментарий"></textarea>
                     <div class="mar-top clearfix">
                         <button class="btn btn-sm btn-primary pull-right" type="submit"><i
                                     class="fa fa-pencil fa-fw"></i> Добавить
