@@ -11,7 +11,7 @@
         <link href="/public/styles/jquery-ui.min.css" rel="stylesheet">
         <script src="/public/scripts/jquery.js"></script>
         <script src="/public/scripts/jquery-ui.min.js"></script>
-        <script src="/public/scripts/form.js"></script>
+        <script src="/public/scripts/main.js"></script>
         <script src="/public/scripts/admin.js"></script>
         <script src="/public/scripts/popper.js"></script>
         <script src="/public/scripts/bootstrap.js"></script>

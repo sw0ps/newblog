@@ -77,7 +77,6 @@ $(document).ready(function () {
                     window.location.href = '/' + json.url;
                 } else {
                     alert(json.status + ' - ' + json.message);
-                    // $("#tags").tokenfield('setTokens', []);
                 }
             },
         });

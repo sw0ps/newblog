@@ -39,8 +39,10 @@ class MainController extends Controller
     public function postAction()
     {
         $data = $this->model->getPost($this->route['id'])[0];
+        $tags = explode(",", $data['tags']);
         $vars = [
             'data' => $data,
+            'tags' => $tags,
         ];
         $this->view->render($data['title'], $vars);
     }

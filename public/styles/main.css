@@ -503,6 +503,22 @@ body {
     background: white;
 }
 
+.tag-success {
+    background-color: #5cb85c;
+}
+.tag {
+    display: inline-block;
+    padding: 0.25em 0.4em;
+    font-size: 75%;
+    font-weight: bold;
+    line-height: 1;
+    color: #fff;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: 0.25rem;
+}
+
 @media all and (max-width: 540px) {
     .form__comment--name,
     .form__comment--email {

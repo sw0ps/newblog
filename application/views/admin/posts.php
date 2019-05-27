@@ -4,7 +4,7 @@
             <div class="card-header">Посты</div>
             <div class="card-body">
                 <div class="row">
-                    <div class="col-sm-6">
+                    <div class="col-sm-12">
                         <?php if (empty($list)): ?>
                             <p>Список постов пуст</p>
                         <?php else: ?>

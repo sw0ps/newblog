@@ -18,6 +18,11 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
+            <div class="tags">
+                <?php foreach ($tags as $tag) { ?>
+                    <span class="tag tag-success"><?= $tag;?></span>
+                <?php } ?>
+            </div>
             <p><?php echo htmlspecialchars($data['content'], ENT_QUOTES); ?></p>
         </div>
     </div>
